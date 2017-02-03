@@ -7,14 +7,22 @@ $(document).ready(function() {
         var part2 = "&near=";
         var part3 = "&query=";
         var url = part1 + part2 + location + part3 + name;
-    
-  
-        
+
+
+
         $.getJSON(url, function(response) {
-            $("#results").append("This is the resturant's name " + " " + response.response.venues[0].name + "<br>");
-            $("#results").append("This is the resturant's number " + " " + response.response.venues[0].contact.phone + "<br>");
-            $("#results").append("This is the resturant's address " + " " + response.response.venues[0].location.address + "<br>");
-        console.log(response);
+          //$("#results").append("This is the resturant's name " + " " + response.response.venues[0].name + "<br>");
+           //$("#results").append("This is the resturant's number " + " " + response.response.venues[0].contact.phone + "<br>");
+        //    $("#results").append("This is the resturant's address " + " " + response.response.venues[0].location.address + "<br>");
+         // console.log(response);
+            
+        var Venues = response.response.venues;
+        for (var i = 0; i <Venues.length; i++) {
+            $("#results").append("This is the resturant's name " + " " + Venues[i].name + "<br>");
+           $("#results").append("This is the resturant's number " + " " + Venues[i].contact.phone + "<br>");
+           $("#results").append("This is the resturant's address " + " " + Venues[i].location.address + "<br>");
+            console.log (Venues[i]);
+            }
         });
     });
 });
